@@ -14,7 +14,7 @@ clean:
 
 windows:
 	GOOS=windows GOARCH=amd64 GOBIN=$(GOBIN) go build -o bin/release/$(APPNAME)-$(VERSION)-windows-amd64/$(APPNAME).exe
-	zip -r bin/release/$(APPNAME)-$(VERSION)-windows-amd64 bin/release/$(APPNAME)-$(VERSION)-windows-amd64
+	zip -r bin/release/$(APPNAME)-$(VERSION)-windows-amd64.zip bin/release/$(APPNAME)-$(VERSION)-windows-amd64
 linux:
 	GOOS=windows GOARCH=amd64 GOBIN=$(GOBIN) go build -o bin/release/$(APPNAME)-$(VERSION)-linux-amd64/$(APPNAME)
 	tar -zcvf bin/release/$(APPNAME)-$(VERSION)-linux-amd64.tar.gz bin/release/$(APPNAME)-$(VERSION)-linux-amd64
