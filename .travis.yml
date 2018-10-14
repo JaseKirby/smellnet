@@ -1,7 +1,23 @@
 language: go
-
 go:
-  - 1.x
-  - 1.6
-  - 1.7.x
+  - "1.x"
+  - "1.8"
+  - "1.10.x"
   - master
+before_install:
+  - sudo apt-get install -y zip
+script:
+  - make
+before_deploy:
+  - make VERSION=${TRAVIS_TAG} release -j2
+deploy:
+  provider: releases
+  api_key:
+    secure: ${GITHUB_DEPLOY_TRAVIS_TOKEN}
+  file_glob: true
+  file:
+    - bin/release/*.zip
+    - bin/release/*.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
