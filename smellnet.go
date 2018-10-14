@@ -64,7 +64,11 @@ func main() {
 		fmt.Printf("http status: %s\n", respStatus)
 		fmt.Println(respTime)
 	}
-	// https request
+	if httpsReq {
+		respStatus, respTime := httpGet("https://")
+		fmt.Printf("https status: %s\n", respStatus)
+		fmt.Println(respTime)
+	}
 }
 
 func tcpAlive() (bool, string, error) {
