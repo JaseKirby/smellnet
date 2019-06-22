@@ -18,7 +18,9 @@ windows:
 linux:
 	GOOS=linux GOARCH=amd64 GOBIN=$(GOBIN) go build -o bin/release/$(APPNAME)-$(VERSION)-linux-amd64/$(APPNAME)
 	tar -C bin/release/$(APPNAME)-$(VERSION)-linux-amd64 -zcvf bin/release/$(APPNAME)-$(VERSION)-linux-amd64.tar.gz .
+darwin:
+	GOOS=darwin GOARCH=amd64 GOBIN=$(GOBIN) go build -o bin/release/$(APPNAME)-$(VERSION)-darwin-amd64/$(APPNAME)
+	tar -C bin/release/$(APPNAME)-$(VERSION)-darwin-amd64 -zcvf bin/release/$(APPNAME)-$(VERSION)-darwin-amd64.tar.gz .
+release: windows linux darwin
 
-release: windows linux
-
-.PHONY: build clean windows linux release
+.PHONY: build clean windows linux darwin release
